@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :events
+  has_many :enrollments
+  has_many :attended_events, through: :enrollments, source: :event
 
   def full_name
     "#{self.first_name} #{self.last_name}"
